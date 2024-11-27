@@ -41,13 +41,13 @@ export default function TransferPage() {
   const accountNumber = watch('accountNumber')
   const selectedBank = watch('bankId')
 
-  useState(() => {
-    listFinancialInstitutions().then(data => {
-      setBanks(data.institutions.map((inst: any) => ({ id: inst.institutionCode, name: inst.institutionName })))
-    }).catch(() => {
-      setError('Failed to fetch banks')
-    })
-  }, [])
+  // useState(() => {
+  //   listFinancialInstitutions().then(data => {
+  //     setBanks(data.institutions.map((inst: any) => ({ id: inst.institutionCode, name: inst.institutionName })))
+  //   }).catch(() => {
+  //     setError('Failed to fetch banks')
+  //   })
+  // }, [])
 
   const handleGetAccountName = async () => {
     if (!accountNumber || !selectedBank) return
@@ -123,7 +123,8 @@ export default function TransferPage() {
                   </SelectTrigger>
                   <SelectContent>
                     {bankCodes.map((bank) => (
-                      <SelectItem key={bank.id} value={bank.id}>
+                      // <SelectItem key={bank.id} value={bank.id}>
+                      <SelectItem key={bank.code} value={bank.code}>
                         {bank.name}
                       </SelectItem>
                     ))}
