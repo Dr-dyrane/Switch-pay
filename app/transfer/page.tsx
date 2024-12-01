@@ -123,9 +123,8 @@ export default function TransferPage() {
                   </SelectTrigger>
                   <SelectContent>
                     {bankCodes.map((bank) => (
-                      // <SelectItem key={bank.id} value={bank.id}>
-                      <SelectItem key={bank.code} value={bank.code}>
-                        {bank.name}
+                      <SelectItem key={bank.institution_code} value={bank.institution_code}>
+                        {bank.bank_name}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -141,7 +140,7 @@ export default function TransferPage() {
                 <div className="bg-gray-100 p-4 rounded-md mb-4">
                   <p><strong>Account Name:</strong> {accountName}</p>
                   <p><strong>Account Number:</strong> {accountNumber}</p>
-                  <p><strong>Bank:</strong> {banks.find(b => b.id === selectedBank)?.name}</p>
+                  <p><strong>Bank:</strong> {bankCodes.find(b => b.institution_code === selectedBank)?.bank_name}</p>
                 </div>
                 <Input
                   {...register('amount', { valueAsNumber: true })}
